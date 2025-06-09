@@ -2,7 +2,7 @@ package br.conectamais.calculadora_ip.model;
 
 public class IP {
 
-	private String ip = "192.168.0.0/20";
+	private String ip = "192.168.0.0/32";
 	
 	private String getIp() {
 		return ip;
@@ -54,21 +54,23 @@ public class IP {
 		return classe;
 	}
 	
-		int primeiroocteto = 0;
-		int segundoocteto = 0;
-		int terceiroocteto = 0;
-		int quartoocteto = 0;
+		
+		
+	String CIDR = ip.substring(separador + 1);
 	
 	public String calcularMascara() {
 		
-		String CIDR = ip.substring(separador + 1);
+		
 		int bits = Integer.parseInt(CIDR);
 		int bitBkp = Integer.parseInt(CIDR);
 		
 	
 		int i = 4;
 		int valor = 129;
-		
+		int primeiroocteto = 0;
+		int segundoocteto = 0;
+		int terceiroocteto = 0;
+		int quartoocteto = 0;
 		
 		
 		// Condição para ser adicionado automaticamente máscara 255 ao primeiro octeto da 
@@ -277,6 +279,16 @@ public class IP {
 			String mascarabinario = binario1 + "." + binario2 + "." + binario3 + "." + binario4;
 			return mascarabinario;
 		}
+		
+		public double calcularIPsDisponiveis() {
+			
+			int CIDRint = Integer.parseInt(CIDR);
+			int potencia = 32 - CIDRint;
+			double ips = Math.pow(2, potencia);
+			
+			return ips;
+		}
+		
 	
 	}
 	

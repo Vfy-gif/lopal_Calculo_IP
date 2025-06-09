@@ -10,7 +10,7 @@ public class calculadora_ip {
 		
 		ip.calcularClasse();
 		ip.calcularMascara();
-		System.out.println(ip.calcularMascaraBinario());
+		System.out.println(ip.calcularIPsDisponiveis());
 	}
 	
 }
