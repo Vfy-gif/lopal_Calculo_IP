@@ -54,7 +54,10 @@ public class IP {
 		return classe;
 	}
 	
-	
+		int primeiroocteto = 0;
+		int segundoocteto = 0;
+		int terceiroocteto = 0;
+		int quartoocteto = 0;
 	
 	public String calcularMascara() {
 		
@@ -62,12 +65,10 @@ public class IP {
 		int bits = Integer.parseInt(CIDR);
 		int bitBkp = Integer.parseInt(CIDR);
 		
-		int primeiroocteto = 0;
-		int segundoocteto = 0;
-		int terceiroocteto = 0;
-		int quartoocteto = 0;
+	
 		int i = 4;
 		int valor = 129;
+		
 		
 		
 		// Condição para ser adicionado automaticamente máscara 255 ao primeiro octeto da 
@@ -235,10 +236,47 @@ public class IP {
 				quartoocteto = quartoocteto - 1;
 			}
 			
-			String mascara = primeiroocteto + "." + segundoocteto + "." + terceiroocteto + "." +quartoocteto;
+			String mascara = primeiroocteto + "." + segundoocteto + "." + terceiroocteto + "." + quartoocteto;
 		return mascara;
 		}
 	
+	
+	
+
+	
+		public String calcularMascaraBinario() {
+			
+			
+			int ponto = ip.indexOf(".");
+			int ponto2 = ip.indexOf(".", ponto + 1);
+			int ponto3 = ip.indexOf(".", ponto2 + 1);
+			int ponto4 = ip.lastIndexOf(".");
+			
+			String octeto1 = ip.substring(0, ponto);
+			int o1 = Integer.parseInt(octeto1);
+			String binario1 = Integer.toBinaryString(o1);
+			
+	
+			
+			
+			String octeto2 = ip.substring(ponto + 1 , ponto2);
+			int o2 = Integer.parseInt(octeto2);
+			String binario2 = Integer.toBinaryString(o2);
+			
+			
+			String octeto3 = ip.substring(ponto2 + 1 , ponto3);
+			int o3 = Integer.parseInt(octeto3);
+			String binario3 = Integer.toBinaryString(o3);
+			
+			
+			
+			String octeto4 = ip.substring(ponto4 + 1 , separador);
+			int o4 = Integer.parseInt(octeto4);
+			String binario4 = Integer.toBinaryString(o4);
+			
+			String mascarabinario = binario1 + "." + binario2 + "." + binario3 + "." + binario4;
+			return mascarabinario;
+		}
 	
 	}
 	
