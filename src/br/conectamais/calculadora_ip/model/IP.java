@@ -2,17 +2,17 @@ package br.conectamais.calculadora_ip.model;
 
 public class IP {
 
-	private String ip = "192.168.0.0/32";
+	private String ip;
 	
-	private String getIp() {
+	public String getIp() {
 		return ip;
 	}
 	
-	private void setIp() {
+	public void setIp(String ip) {
 		this.ip = ip;
 	}
 	
-	int separador = ip.indexOf("/");
+	
 	
 	
 	public String calcularClasse() {
@@ -24,38 +24,37 @@ public class IP {
 		
 		if (ipclass >= 1 && ipclass <= 127 ) {
 			
-			classe = "Classe A";
+			classe = "A";
 			
 		} 
 		
 		if (ipclass >= 128 && ipclass <= 191 ) {
 			
-			classe = "Classe B";
+			classe = "B";
 			
 		}
 		
 		if (ipclass >= 192 && ipclass <= 223) {
 			
-			classe = "Classe C";
+			classe = "C";
 			
 		}
 		
 		if (ipclass >= 224 && ipclass <= 239) {
 			
-			classe = "Classe D";
+			classe = "D";
 			
 		}
 		
 		if (ipclass >= 240 && ipclass <= 255) {
 			
-			classe = "Classe E";
+			classe = "E";
 		
 		} 
 		return classe;
 	}
 	
-		
-		
+	int separador = ip.indexOf("/");
 	String CIDR = ip.substring(separador + 1);
 	
 	public String calcularMascara() {
